@@ -1,13 +1,14 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from "expo-status-bar";
-import { View } from "react-native";
-import AppLoading from "expo-app-loading";
+import { ActivityIndicator, View } from "react-native";
+
 import {
   useFonts,
   Inter_400Regular,
   Inter_500Medium,
 } from "@expo-google-fonts/inter";
 
-import { Widget } from "./src/components/Widget";
+import Widget from "./src/components/Widget";
 import { theme } from "./src/theme";
 
 export default function App() {
@@ -17,13 +18,19 @@ export default function App() {
   });
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return (
+      <ActivityIndicator
+        size="large"
+        color="#666"
+        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+      />
+    );
   }
 
   return (
     <View style={{ flex: 1, backgroundColor: theme.colors.background }}>
-      <Widget />
       <StatusBar style="light" backgroundColor="transparent" translucent />
+      <Widget />
     </View>
   );
 }
