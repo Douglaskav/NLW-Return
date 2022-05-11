@@ -29,7 +29,7 @@ function Widget() {
 	}
 
 	function handleFeedbackSent() {
-	setFeedbackSent(true);
+		setFeedbackSent(true);
 	}
 
 	return (
@@ -48,11 +48,15 @@ function Widget() {
 				handleIndicatorStyle={styles.indicator}
 			>
 				{feedbackSent ? (
-					<Success />
+					<Success onSendAnotherFeedback={handleRestartFeedback} />
 				) : (
 					<>
 						{feedbackType ? (
-							<Form feedbackType={feedbackType} onFeedbackCanceled={handleRestartFeedback} onFeedbackSent={handleFeedbackSent} />
+							<Form
+								feedbackType={feedbackType}
+								onFeedbackCanceled={handleRestartFeedback}
+								onFeedbackSent={handleFeedbackSent}
+							/>
 						) : (
 							<Options onFeedbackTypeChanged={setFeedbackType} />
 						)}
