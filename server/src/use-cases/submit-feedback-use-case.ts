@@ -29,8 +29,6 @@ export class SubmitFeedbackUseCase {
 			screenshot,
 		});
 
-		console.log(screenshot);
-
 		await this.mailAdapter.sendMail({
 			subject: "Novo Feedback!",
 			body: [
